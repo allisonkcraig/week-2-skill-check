@@ -71,7 +71,7 @@ def find_common_items(list1, list2):
     for num in list1:
         dict1[num] = 1
 
-        
+
 
     for item in list2:
         for key in dict1.keys():
@@ -206,27 +206,33 @@ def encode(phrase):
         >>> encode("You are a beautiful, talented, brilliant, powerful musk ox.")
         'You drp d bpduouful, odlpnopd, brulludno, powprful musk ox.'
     """
-    letter_list = []
-    phrase_list = []
-    for letter in phrase:
-        letter_list.append(letter)
+    letter_switch = {
+        'e' : 'p',
+        'a' : 'd',
+        't' : 'o',
+        'i' : 'u',
+    }
 
 
-    for letter in letter_list:
-        if letter == 'e':
-            phrase_list.append('p')
-        elif letter == 'a':
-            phrase_list.append('d')
-        elif letter == 't':
-            phrase_list.append('o')
-        elif letter == 'i':
-            phrase_list.append('u')
-        else:
-            phrase_list.append(letter)
+    for key, value in letter_switch.items():
+        phrase = phrase.replace(key, value, len(phrase))
+
+
+    # for letter in letter_list:
+    #     if letter == 'e':
+    #         phrase_list.append('p')
+    #     elif letter == 'a':
+    #         phrase_list.append('d')
+    #     elif letter == 't':
+    #         phrase_list.append('o')
+    #     elif letter == 'i':
+    #         phrase_list.append('u')
+    #     else:
+    #         phrase_list.append(letter)
 
 
 
-    return "".join(phrase_list)
+    return phrase
 
 
 def sort_by_word_length(words):
@@ -327,11 +333,12 @@ def get_pirate_talk(phrase):
     create_phrase = []
     
     for word in split_phrase:
-        if word == translate_to_pirate.keys():
-            value = translate_to_pirate[word]
-            create_phrase.append(value)
-        else:
-            create_phrase.append(word)
+        for key, value in translate_to_pirate.interitems():
+            if word == translate_to_pirate.keys():
+            
+                create_phrase.append(value)
+            else:
+                create_phrase.append(word)
     
 
     new_phrase = " ".join(create_phrase)
