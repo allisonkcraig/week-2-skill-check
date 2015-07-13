@@ -65,7 +65,7 @@ def find_common_items(list1, list2):
         [1, 1, 2, 2]
 
     """
-    
+    # ONly mostly complete :(
     dict1 = {}
     multiples = []
     for num in list1:
@@ -149,16 +149,17 @@ def get_sum_zero_pairs(input_list):
         [[-2, 2], [-1, 1], [0, 0]]
 
     """
-    num_dict = {}
+
+    # NOT COMPLETE
+
     output_dict = {}
     output_list = []
-    for num in input_list:
-        num_dict[num] = num
-
-    for key in num_dict.keys():
-        for value in num_dict.values():
-            if key + value == 0:
-                    output_dict[(key, value)] = None
+    
+    # iterate over input_list
+    for num1 in input_list: 
+        for num2 in input_list:
+            if num1 + num2 == 0:
+                output_dict[(num1, num2)] = None
 
     for key in output_dict.keys():
         output_list.append(key)
@@ -216,20 +217,6 @@ def encode(phrase):
 
     for key, value in letter_switch.items():
         phrase = phrase.replace(key, value, len(phrase))
-
-
-    # for letter in letter_list:
-    #     if letter == 'e':
-    #         phrase_list.append('p')
-    #     elif letter == 'a':
-    #         phrase_list.append('d')
-    #     elif letter == 't':
-    #         phrase_list.append('o')
-    #     elif letter == 'i':
-    #         phrase_list.append('u')
-    #     else:
-    #         phrase_list.append(letter)
-
 
 
     return phrase
